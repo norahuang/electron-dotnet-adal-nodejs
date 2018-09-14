@@ -44,15 +44,19 @@ Take a note of the APP's URL and Client ID(**App Serive** -> select your web api
 
 ## Native App setup
 
-### Step 1: Register your electron app as a native application on Azure Active Directory. Read [Configure a native client application](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication#optional-configure-a-native-client-application) for detail.
+### Step 1: 
+Register your electron app as a native application on Azure Active Directory. Read [Configure a native client application](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication#optional-configure-a-native-client-application) for detail.
 
-### Step 2: Config your own redirect URIS(**Azure Active Directory** -> **App registrations** -> select the native app your register in step 1 -> **Setting** -> **Redirect URIS**), in this sample:
+### Step 2: 
+Config your own redirect URIS(**Azure Active Directory** -> **App registrations** -> select the native app your register in step 1 -> **Setting** -> **Redirect URIS**), in this sample:
 * The contataction of the web api URL and **loggedIn** (the controller provided in the .Net server project) is used as the secussful login redirect URI.
 * urn:ietf:wg:oauth:2.0:oob is used for logout redirect URI. [Reference](https://docs.microsoft.com/en-us/azure/active-directory/develop/v1-protocols-oauth-code#request-an-authorization-code) 
 
-### Step 3: Take a not of the **Application ID** in the Setting of this native app. Replace the "clientId" with the *Application ID* in the authentication.js file of the Client project.
+### Step 3: 
+Take a not of the **Application ID** in the Setting of this native app. Replace the "clientId" with the *Application ID* in the authentication.js file of the Client project.
 
-### Step 4: Enabling OAuth 2.0 implicit grant for this native app. 
+### Step 4: 
+Enabling OAuth 2.0 implicit grant for this native app. 
 * Set **oauth2AllowImplicitFlow** as true in the manifest.(**Azure Active Directory** -> **App registrations** -> select the native app your register in step 1 -> **Manifest**)
 
 
