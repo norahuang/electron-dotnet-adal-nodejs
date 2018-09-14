@@ -1,0 +1,5 @@
+Server/bin
+Server/obj
+
+Client/node_modules
+Client/out

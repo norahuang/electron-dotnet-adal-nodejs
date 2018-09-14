@@ -1,0 +1,30 @@
+/*Main Frame*/
+nav {
+    padding: 15px 0;
+    border: none;
+    background: #000;
+    position: relative;
+}
+
+
+/*authentication*/
+.loggedinUser {
+    float: none;
+    padding-right: 15px;
+    display: inline-block; 
+}
+
+.bottonText {
+    color: #999 !important;
+    border: 1px solid #999 !important;
+}
+
+
+
+
+
+
+
+    
+
+    

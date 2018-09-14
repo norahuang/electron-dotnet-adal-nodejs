@@ -1,0 +1,82 @@
+{
+  "name": "client",
+  "productName": "electron-dotnet-adal-nodejs",
+  "version": "1.0.0",
+  "description": "An electron application as a native app of the sample of Azure active directory authentication",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "eslint src --color"
+  },
+  "keywords": [],
+  "author": "t-huhuan",
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "packageManager": "yarn"
+      },
+      "electronWinstallerConfig": {
+        "name": "client"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "",
+        "name": ""
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "client"
+      }
+    }
+  },
+  "dependencies": {
+    "adal-angular": "^1.0.17",
+    "angular": "^1.7.3",
+    "electron-compile": "^6.4.3",
+    "electron-squirrel-startup": "^1.0.0",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "electron-forge": "^5.2.2",
+    "electron-prebuilt-compile": "2.0.4",
+    "eslint": "^3",
+    "eslint-config-airbnb": "^15",
+    "eslint-plugin-import": "^2",
+    "eslint-plugin-jsx-a11y": "^5",
+    "eslint-plugin-react": "^7"
+  },
+  "resolutions": {
+    "//": [
+      "These are patched versions to address security concerns of these packages.",
+      "When updating other packages one must go over these and doublecheck if they can be removed"
+    ],
+    "**/constantinople": "3.1.2",
+    "**/cryptiles": "4.1.2",
+    "**/hoek": "4.2.1",
+    "**/lodash": "4.17.10",
+    "**/mime": "2.0.5",
+    "**/minimatch": "3.0.4",
+    "**/semver": "4.3.6",
+    "**/uglify-js": "2.6.0"
+  }
+}
