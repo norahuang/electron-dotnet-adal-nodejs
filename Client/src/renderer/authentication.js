@@ -4,7 +4,7 @@ const AuthenticationContext = require('adal-angular');
 const resourceId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'; // server app id, it is registered in Azure as an app service
 const config = {
   clientId: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy',        // client app id of this electron app, it is registered in Azure active directory as a native application
-  redirectUri: `${serverLoc}loggedIn`, // This is a redirect URI configured in dominoprofiler client app, Azure active directory
+  redirectUri: `${serverLoc}loggedIn`, // This is a redirect URI to the server and configured in client app, Azure active directory
   postLogoutRedirectUri: 'urn:ietf:wg:oauth:2.0:oob', // This is the default redirect URI configured in dominoprofiler client app, Azure active directory
   tenant: 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz',  // Your tenant id (usally is the tenent id of your organization for example Microsoft)
 };
@@ -45,7 +45,7 @@ function logIn() {
     const popup = window.open(url, 'auth-popup', 'width=800,height=500');
     const intervalId = window.setInterval(function () {
       try {
-        if (popup.location.indexOf('dominobuildprofiler.azurewebsites.net/test') >= 0) {
+        if (popup.location.indexOf('dominobuildprofiler.azurewebsites.net/loggedIn') >= 0) {
           window.clearInterval(intervalId);
           const hash = `#${popup.location.toString().split('#')[1]}`; // In electron, window.open retruns a BrowserWindowProxy which only provide limited api and doesn't include location.hash. So need to parse it manually.
           authContext.handleWindowCallback(hash);
@@ -103,7 +103,7 @@ function setUpCallback() {
   const intervalId = window.setInterval(function () {
     try {
       if (window.frames && window.frames[iframeId]) {
-        if (window.frames[iframeId].contentDocument.URL.indexOf('dominobuildprofiler.azurewebsites.net/test') >= 0) {
+        if (window.frames[iframeId].contentDocument.URL.indexOf('dominobuildprofiler.azurewebsites.net/loggedIn') >= 0) {
           window.clearInterval(intervalId);
           const hash = `#${window.frames[iframeId].contentDocument.URL.split('#')[1]}`;
           authContext.handleWindowCallback(hash);

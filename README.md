@@ -33,11 +33,14 @@ Or you can use an exist tenant.
 
 ## Web API setup
 
-### Step 1: Publish the Server in this sample as an APP Services in Azure portal. A simple way to do that is through Visual Studio. Read [Publish an ASP.NET Core app to Azure with Visual Studio](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs?view=aspnetcore-2.1) for detials.
+### Step 1
+Publish the Server in this sample as an APP Services in Azure portal. A simple way to do that is through Visual Studio. Read [Publish an ASP.NET Core app to Azure with Visual Studio](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs?view=aspnetcore-2.1) for detials.
 
-### Step 2: Configure the Azure active directory authentication for this web API. There are two methods, [using express settings](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication#a-nameexpress-aconfigure-azure-active-directory-using-express-settings) or [manually configure with advanced settings](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication#a-nameadvanced-aalternative-method-manually-configure-azure-active-directory-with-advanced-settings).
+### Step 2 
+Configure the Azure active directory authentication for this web API. There are two methods, [using express settings](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication#a-nameexpress-aconfigure-azure-active-directory-using-express-settings) or [manually configure with advanced settings](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication#a-nameadvanced-aalternative-method-manually-configure-azure-active-directory-with-advanced-settings).
 
-### Step 3: Take a note of the APP's URL and Client ID(**App Serive** -> select your web api -> **Authentication/Authorization** -> **Azure Active Directory** -> **Advanced** tag of **Management mode** -> you will find the Client ID). Replace the "resourceId" with the Client ID you get here in the authentication.js file of the Client project. Replace the serverLoc with the app URL.
+### Step 3
+Take a note of the APP's URL and Client ID(**App Serive** -> select your web api -> **Authentication/Authorization** -> **Azure Active Directory** -> **Advanced** tag of **Management mode** -> you will find the Client ID). Replace the "resourceId" with the Client ID you get here in the authentication.js file of the Client project. Replace the serverLoc with the app URL.
 
 ## Native App setup
 
