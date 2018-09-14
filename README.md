@@ -33,23 +33,30 @@ Or you can use an exist tenant.
 
 ## Web API setup
 
-### Step 1: Publish the Server in this sample as an APP Services in Azure portal. A simple way to do that is through Visual Studio. Read [Publish an ASP.NET Core app to Azure with Visual Studio](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs?view=aspnetcore-2.1) for detials.
+### Step 1: 
+Publish the Server in this sample as an APP Services in Azure portal. A simple way to do that is through Visual Studio. Read [Publish an ASP.NET Core app to Azure with Visual Studio](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs?view=aspnetcore-2.1) for detials.
 
-### Step 2: Configure the Azure active directory authentication for this web API. There are two methods, [using express settings](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication#a-nameexpress-aconfigure-azure-active-directory-using-express-settings) or [manually configure with advanced settings](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication#a-nameadvanced-aalternative-method-manually-configure-azure-active-directory-with-advanced-settings).
+### Step 2: 
+Configure the Azure active directory authentication for this web API. There are two methods, [using express settings](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication#a-nameexpress-aconfigure-azure-active-directory-using-express-settings) or [manually configure with advanced settings](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication#a-nameadvanced-aalternative-method-manually-configure-azure-active-directory-with-advanced-settings).
 
-### Step 3: Take a note of the APP's URL and Client ID(**App Serive** -> select your web api -> **Authentication/Authorization** -> **Azure Active Directory** -> **Advanced** tag of **Management mode** -> you will find the Client ID). Replace the "resourceId" with the Client ID you get here in the authentication.js file of the Client project. Replace the serverLoc with the app URL.
+### Step 3: 
+Take a note of the APP's URL and Client ID(**App Serive** -> select your web api -> **Authentication/Authorization** -> **Azure Active Directory** -> **Advanced** tag of **Management mode** -> you will find the Client ID). Replace the "resourceId" with the Client ID you get here in the authentication.js file of the Client project. Replace the serverLoc with the app URL.
 
 ## Native App setup
 
-### Step 1: Register your electron app as a native application on Azure Active Directory. Read [Configure a native client application](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication#optional-configure-a-native-client-application) for detail.
+### Step 1: 
+Register your electron app as a native application on Azure Active Directory. Read [Configure a native client application](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication#optional-configure-a-native-client-application) for detail.
 
-### Step 2: Config your own redirect URIS(**Azure Active Directory** -> **App registrations** -> select the native app your register in step 1 -> **Setting** -> **Redirect URIS**), in this sample:
+### Step 2: 
+Config your own redirect URIS(**Azure Active Directory** -> **App registrations** -> select the native app your register in step 1 -> **Setting** -> **Redirect URIS**), in this sample:
 * The contataction of the web api URL and **loggedIn** (the controller provided in the .Net server project) is used as the secussful login redirect URI.
 * urn:ietf:wg:oauth:2.0:oob is used for logout redirect URI. [Reference](https://docs.microsoft.com/en-us/azure/active-directory/develop/v1-protocols-oauth-code#request-an-authorization-code) 
 
-### Step 3: Take a not of the **Application ID** in the Setting of this native app. Replace the "clientId" with the *Application ID* in the authentication.js file of the Client project.
+### Step 3: 
+Take a not of the **Application ID** in the Setting of this native app. Replace the "clientId" with the *Application ID* in the authentication.js file of the Client project.
 
-### Step 4: Enabling OAuth 2.0 implicit grant for this native app. 
+### Step 4: 
+Enabling OAuth 2.0 implicit grant for this native app. 
 * Set **oauth2AllowImplicitFlow** as true in the manifest.(**Azure Active Directory** -> **App registrations** -> select the native app your register in step 1 -> **Manifest**)
 
 
