@@ -4,7 +4,7 @@ platforms: electron nodejs .Net
 author: norahuang
 ---
 
-# Integrating Azure AD into a Native application to web API solution
+# Integrating Azure AD into the solution that allow an Electron Native application access to a .NET web API 
 
 ## About this sample
 
