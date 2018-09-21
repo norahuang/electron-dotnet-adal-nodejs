@@ -45,35 +45,45 @@ function logIn() {
     const popup = window.open(url, 'auth-popup', 'width=800,height=500');
     const intervalId = window.setInterval(function () {
       try {
-        if (popup.location.indexOf('dominobuildprofiler.azurewebsites.net/loggedIn') >= 0) {
-          window.clearInterval(intervalId);
+        if (popup.location.indexOf('dominobuildprofiler.azurewebsites.net/test') >= 0) {
           const hash = `#${popup.location.toString().split('#')[1]}`; // In electron, window.open retruns a BrowserWindowProxy which only provide limited api and doesn't include location.hash. So need to parse it manually.
-          authContext.handleWindowCallback(hash);
-          updateAuthUi(authContext.getCachedUser());
-          getAccessToken(); // acquire access token after logged in
+          if (hash && hash !== '#undefined') {
+            authContext.handleWindowCallback(hash);
+            updateAuthUi(authContext.getCachedUser());
+            acquireAccessTokenAfterLogin(); // acquire access token after logged in
+          } else {
+            authContext._handlePopupError();
+            popup.close();
+            logIn();
+          }
+          window.clearInterval(intervalId);
         }
       } catch (error) {
         window.clearInterval(intervalId);
+        authContext._handlePopupError();
+        popup.close();
       }
     }, 10);
   };
   authContext.login();
 }
 
-function getAccessToken() {
+function acquireAccessTokenAfterLogin() {
   setUpCallback();
   acquireToken();
 }
 
-function getResource(resourceUrl) {
+function getResource(resourceUrl, successCallBack, failCallBack) {
   setUpCallback();
-  getResourceWithToken(resourceUrl);
+  getResourceWithToken(resourceUrl, successCallBack, failCallBack);
 }
+
 
 function getResourceWithToken(resourceUrl, successCallBack, failCallBack) {
   authContext.acquireToken(resourceId, (errorDesc, token, error) => {
     if (error && error.indexOf('login') >= 0) {
       logIn();
+      return;
     }
     if (token && resourceUrl) {
       $.ajax({
@@ -85,6 +95,9 @@ function getResourceWithToken(resourceUrl, successCallBack, failCallBack) {
       })
       .done(successCallBack)
       .fail(failCallBack);
+    } else {
+      alert('Cannot load data from server!');
+      removeLoading();
     }
   });
 }
@@ -103,7 +116,7 @@ function setUpCallback() {
   const intervalId = window.setInterval(function () {
     try {
       if (window.frames && window.frames[iframeId]) {
-        if (window.frames[iframeId].contentDocument.URL.indexOf('dominobuildprofiler.azurewebsites.net/loggedIn') >= 0) {
+        if (window.frames[iframeId].contentDocument.URL.indexOf('dominobuildprofiler.azurewebsites.net/test') >= 0) {
           window.clearInterval(intervalId);
           const hash = `#${window.frames[iframeId].contentDocument.URL.split('#')[1]}`;
           authContext.handleWindowCallback(hash);
